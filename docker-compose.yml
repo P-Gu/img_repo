@@ -1,0 +1,15 @@
+version: '2.2'
+services:
+  imagerepo:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: imagerepo
+    ports:
+      - 8080
+    #networks:
+    #  - network1
+    scale: 1
+
+#networks:
+#  network1:

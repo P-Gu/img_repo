@@ -1,0 +1,19 @@
+app:
+   datasource:
+      jdbc-url: jdbc:mysql://imgrepodb.cutv2zsm1lm5.us-east-2.rds.amazonaws.com:3306/main
+      username: pgu
+      password: a84535680
+      pool-size: 30
+  
+spring:
+   #  thymeleaf:
+   #     cache: false
+   #     enabled: true
+   #     check-template: true
+   #     check-template-location: true
+   #     prefix: classpath:/templates/
+   #     suffix: .html
+   application:
+      name: Image Repository
+   flyway:
+      baseline-on-migrate: true

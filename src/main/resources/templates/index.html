@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Image Repo Demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="/tether.min.js"></script>
+</head>
+<body>
+<!--img src="../images/missing.png"-->
+<!--div class="column" th:each="url: ${urls}">
+    <p>url</p>
+    <div class="row">
+        <img class="lazyload" src="../images/missing.png" th:data-src="${url}" style="max-width:300px; Padding: 10px,10px,10px,10px;"/>
+    </div>
+</div-->
+
+<form class="form-inline mt-2 mt-md-0" method="post" action="/findImage/add" enctype="multipart/form-data">
+    <label for = "title">Image Title: </label>
+    <input class="form-control mr-sm-2" type="text" name="title" id = "title"></input><br><br>
+    <label for = "file">Select File: </label>
+    <input type="file" id="file" name="file"><br><br>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+</form>
+
+<p th:text="${addResponse}"></p>
+
+<div class = "container" th:each="url: ${urls}">
+    <img src="../images/missing.png" th:data-src="${url}" class = "lazyload img-fluid" style = "max-width: 100%"/>
+</div>
+
+<!--div class = "container">
+    <img src = "https://pguimages.s3.us-east-2.amazonaws.com/vofan3.jpg" class = "img-fluid" style = "max-width: 33%"/>
+    <img src = "https://pguimages.s3.us-east-2.amazonaws.com/vofan2.jpg" class = "img-fluid" style = "max-width: 33%"/>
+    <img src = "https://pguimages.s3.us-east-2.amazonaws.com/vofan1.jpg" class = "img-fluid" style = "max-width: 33%"/>
+</div-->
+
+<script>
+    lazyload();
+</script>
+</body>
+</html>
