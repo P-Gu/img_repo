@@ -20,5 +20,7 @@ public interface ImageDao {
     String selectImageUrlById(int id);
 
     List<String> selectAllImageUrls();
+
+    int insertImageUrl(String title, String url);
     
 }

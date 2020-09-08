@@ -58,5 +58,16 @@ public class ImageDataAccessService implements ImageDao {
         return urls;
     }
 
+    @Override
+    public int insertImageUrl(String title, String url) {
+        try {
+            final String sql = "insert into urls (title, url) values (?, ?)";
+            return jdbcTemplate.update(sql, new Object[]{title, url});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 
 }

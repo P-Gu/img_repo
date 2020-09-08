@@ -56,8 +56,8 @@ public class ImageController {
 
 	}
 
-	@GetMapping()
-	public String findAllImages(Model model){//@RequestParam("name") String name, Model model)  {
+	@GetMapping(value={"/add", ""})
+	public String findAllImages(Model model){
 		
 		model.addAttribute("urls", imageService.selectAllImageUrls());
 

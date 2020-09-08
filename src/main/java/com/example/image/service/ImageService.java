@@ -55,8 +55,6 @@ public class ImageService {
     public boolean addImageToS3(MultipartFile file, String title) {
         Regions clientRegion = Regions.US_EAST_2;
         String bucketName = "pguimages";
-        String keyName = file.getName();
-        System.out.println(keyName);
 
         try {
             BasicAWSCredentials creds = new BasicAWSCredentials("AKIAJSQPCHPAG65BASBA",
@@ -65,20 +63,17 @@ public class ImageService {
                     .withRegion(clientRegion)
                     .withCredentials(new AWSStaticCredentialsProvider(creds))
                     .build();
-            //TransferManager tm = TransferManagerBuilder.standard()
-            //        .withS3Client(s3Client)
-            //        .build();
 
-            // TransferManager processes all transfers asynchronously,
-            // so this call returns immediately.
             InputStream inputStream = file.getInputStream();
             ObjectMetadata data = new ObjectMetadata();
             data.setContentType(file.getContentType());
             data.setContentLength(file.getSize());
-            //Upload upload = tm.upload(bucketName, keyName, inputStream, data);
-            PutObjectResult objectResult = s3Client.putObject(bucketName, "vofan4.jpg", inputStream, data);
-            //System.out.println(objectResult.getContentMd5());
-            return true;
+
+            PutObjectResult objectResult = s3Client.putObject(bucketName, title+".jpg", inputStream, data);
+
+            String url = "https://pguimages.s3.us-east-2.amazonaws.com/" + title + ".jpg";
+            if (imageDao.insertImageUrl(title, url)>=1) return true;
+            else return false;
         } catch (Exception e) {
             e.printStackTrace();
         } 
