@@ -6,5 +6,6 @@ Backend is implemented with Spring Boot. After the user uploads the title and im
 
 To build the project, enter root folder in command line and type 
 > docker-compose up
+
 After docker compose succeeds, open another command, type
 > docker run -p 5000:8080 imagerepo
