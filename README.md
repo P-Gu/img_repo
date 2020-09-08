@@ -9,3 +9,5 @@ To build the project, enter root folder in command line and type
 
 After docker compose succeeds, open another command, type
 > docker run -p 5000:8080 imagerepo
+
+Now you can go to localhost:5000/findImage in your browser.
